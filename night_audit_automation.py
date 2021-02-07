@@ -74,7 +74,8 @@ def night_audit_automation():
 
     input_elemwnt = driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "hasDatepicker", " " ))]')
 
-    action.triple_click(input_elemwnt).perform()
+    action.triple_click(input_elemwnt).perform()  # wrote triple click function my self in the selenium source code
+    # that's so cool
     # driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "hasDatepicker",
     # " " ))]').click()
 
