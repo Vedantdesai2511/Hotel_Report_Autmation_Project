@@ -3,14 +3,7 @@ import time
 import pyautogui
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-from selenium.webdriver.support.select import Select
-import yagmail
-import schedule
-import os
 import tabula
-import data_management_house_keeping
-import pdfkit
-import pandas as pd
 from selenium.webdriver import ActionChains
 import hotel_journal_summary_report_analysis
 
@@ -20,11 +13,6 @@ driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome
 action = ActionChains(driver)
 
 link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
-
-# open_link(link_to_open)
-
-# from selenium.webdriver.common.action_chains import ActionChains
-
 
 def night_audit_automation():
     print("I am here")
@@ -144,3 +132,5 @@ def night_audit_automation():
     time.sleep(5)
 
     driver.find_elements_by_class_name("CHI_Button")
+
+night_audit_automation()
