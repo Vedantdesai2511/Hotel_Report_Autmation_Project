@@ -1,4 +1,6 @@
 import pandas as pd
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 
 def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report):
@@ -21,4 +23,7 @@ def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report)
     #
     # final_output.to_csv("final_output.csv")
 
-hotel_journal_summary_report_analysis_function()
+
+root_directory = r'C:\Users\vedan\Downloads\{}'
+
+hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))

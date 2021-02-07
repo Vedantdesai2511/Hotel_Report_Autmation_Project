@@ -113,11 +113,11 @@ def night_audit_automation():
 
     time.sleep(1)
 
-    pyautogui.hotkey('enter')
+    # pyautogui.hotkey('enter')
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
 
-    hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary '
+    hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary'
 
     tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
                         root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
@@ -125,3 +125,12 @@ def night_audit_automation():
 
 
 night_audit_automation()
+
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
+#     '%m_%d_%Y') + 'hotel_journal_summary'
+#
+# tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
+#                     root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
+#                     stream=True, pages=1)
