@@ -72,14 +72,21 @@ def night_audit_automation():
 
     time.sleep(3)
 
-    input_elemwnt = driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "hasDatepicker", " " ))]')
+    input_elemwnt = driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", '
+                                                 '"hasDatepicker", " " ))]')
 
     action.triple_click(input_elemwnt).perform()  # wrote triple click function my self in the selenium source code
     # that's so cool
     # driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "hasDatepicker",
     # " " ))]').click()
 
-    time.sleep(10)
+    time.sleep(2)
+
+    pyautogui.hotkey('backspace')
+
+    pyautogui.write((datetime.today() + relativedelta(days=-1)).strftime('%m/%d/%Y'))
 
 
-night_audit_automation()
+# night_audit_automation()
+
+print((datetime.today() + relativedelta(days=-1)).strftime('%m/%d/%Y'))
