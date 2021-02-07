@@ -165,6 +165,7 @@ def night_audit_automation():
 #
 # driver.switch_to.window(driver.window_handles[1])
 #
+# eoiwfngiuosnrdu9iog
 # main_window = driver.switch_to.window(driver.window_handles[0])
 #
 # print(main_window)
