@@ -7,12 +7,12 @@ import tabula
 from selenium.webdriver import ActionChains
 import hotel_journal_summary_report_analysis
 
-
 driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
 
 action = ActionChains(driver)
 
 link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
+
 
 def night_audit_automation():
     print("I am here")
@@ -107,7 +107,8 @@ def night_audit_automation():
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
 
-    hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary'
+    hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + \
+        'hotel_journal_summary '
 
     tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
                         root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
@@ -115,7 +116,8 @@ def night_audit_automation():
 
     time.sleep(5)
 
-    cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
+    cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
+        root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
 
     print(cash_value)
 
@@ -132,5 +134,6 @@ def night_audit_automation():
     time.sleep(5)
 
     driver.find_elements_by_class_name("CHI_Button")
+
 
 night_audit_automation()
