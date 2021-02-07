@@ -157,38 +157,42 @@ def night_audit_automation():
 
 driver.get(link_to_open)
 
-    driver.execute_script("window.open()")
+driver.execute_script("window.open()")
 
-    driver.switch_to.window(driver.window_handles[1])
+driver.switch_to.window(driver.window_handles[1])
 
-    main_window = driver.switch_to.window(driver.window_handles[0])
+main_window = driver.switch_to.window(driver.window_handles[0])
 
-    print(main_window)
+print(main_window)
 
-    time.sleep(0.5)
+time.sleep(0.5)
 
-    e = driver.find_elements_by_class_name("CHI_Cell")
+e = driver.find_elements_by_class_name("CHI_Cell")
 
-    print(e)
-    time.sleep(1)
+print(e)
+time.sleep(1)
 
-    a = driver.find_element_by_xpath("//input")
-    # e.send_keys("vedantdesai07@gmail.com")
+a = driver.find_element_by_xpath("//input")
+# e.send_keys("vedantdesai07@gmail.com")
 
-    print(a)
+print(a)
 
-    a.send_keys("Vdesai.TXI54")
+a.send_keys("Vdesai.TXI54")
 
-    pyautogui.hotkey('tab')
+pyautogui.hotkey('tab')
 
-    pyautogui.write('Vbd@251196')
+pyautogui.write('Vbd@251196')
 
-    pyautogui.hotkey('tab')
+pyautogui.hotkey('tab')
 
-    pyautogui.hotkey('enter')
-    # driver.find_element_by_xpath(
-    #     '//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]').click()
+pyautogui.hotkey('enter')
+# driver.find_element_by_xpath(
+#     '//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]').click()
 
-    time.sleep(3)
+time.sleep(3)
 
-driver.find_element_by_xpath('//*[(@id = "bannerFavButton_14")] | //*[(@id = "act8")]').click()
+driver.find_element_by_xpath('//*[(@id = "bannerFavButton_14")]').click()
+
+time.sleep(5)
+
+driver.find_elements_by_class_name("CHI_Button")
