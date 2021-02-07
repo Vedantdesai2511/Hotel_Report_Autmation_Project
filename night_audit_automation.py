@@ -125,12 +125,24 @@ def night_audit_automation():
                         root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
                         stream=True, pages=1)
 
+    time.sleep(5)
+
+    cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(hotel_journal_summary_report_file_name + '.csv')
+
+    print(cash_value)
+
+    time.sleep(3)
+
+    # driver.switch_to.window(driver.window_handles[0])
+
+    driver.find_element_by_xpath('// *[(@ id = "goBack")]').click()
+
 
 night_audit_automation()
 
-root_directory = r'C:\Users\vedan\Downloads\{}'
-
-hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))
 
 # hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
 #     '%m_%d_%Y') + 'hotel_journal_summary'
