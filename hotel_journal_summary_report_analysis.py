@@ -20,3 +20,5 @@ def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report)
     # print(final_output)
     #
     # final_output.to_csv("final_output.csv")
+
+hotel_journal_summary_report_analysis_function()
