@@ -115,5 +115,13 @@ def night_audit_automation():
 
     pyautogui.hotkey('enter')
 
+    root_directory = r'C:\Users\vedan\Downloads\{}'
+
+    hotel_journal_summary_report_file_name = (datetime.today()).strftime('%m_%d_%Y') + 'hotel_journal_summary'
+
+    tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
+                        root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
+                        stream=True, pages=1)
+
 
 # night_audit_automation()
