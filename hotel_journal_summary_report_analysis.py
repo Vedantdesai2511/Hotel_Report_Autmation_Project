@@ -6,7 +6,12 @@ from dateutil.relativedelta import relativedelta
 def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report):
     df1 = pd.read_csv(hotel_journal_summary_report)
 
-    print(df1)
+    print(df1.columns)
+
+    print(df1['Description (Transaction'])
+    a = df1.loc[df1['Description (Transaction'] == 'Cash (CA)']
+    # df2.loc[df2['Stay/C/O'] == "Stay"
+    print(str(a['Postings1']))
     # print(df2)
     # print("#########################")
     # a = df2.drop(df2.loc[df2['Stay/C/O'] == "Stay"].index)
