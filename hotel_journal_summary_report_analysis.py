@@ -1,6 +1,4 @@
 import pandas as pd
-from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
 
 def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report):
@@ -13,6 +11,8 @@ def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report)
     # df2.loc[df2['Stay/C/O'] == "Stay"
     value = str(a['Postings1'])
     print(float(value[(value.find('(') + 1):value.find(')')]))
+
+    return float(value[(value.find('(') + 1):value.find(')')])
     # print(df2)
     # print("#########################")
     # a = df2.drop(df2.loc[df2['Stay/C/O'] == "Stay"].index)
@@ -30,6 +30,7 @@ def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report)
     # final_output.to_csv("final_output.csv")
 
 
-root_directory = r'C:\Users\vedan\Downloads\{}'
-
-hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(
+# days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))

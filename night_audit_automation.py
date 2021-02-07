@@ -12,6 +12,8 @@ import data_management_house_keeping
 import pdfkit
 import pandas as pd
 from selenium.webdriver import ActionChains
+import hotel_journal_summary_report_analysis
+
 
 driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
 
@@ -126,8 +128,10 @@ def night_audit_automation():
 
 night_audit_automation()
 
-# root_directory = r'C:\Users\vedan\Downloads\{}'
-#
+root_directory = r'C:\Users\vedan\Downloads\{}'
+
+hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))
+
 # hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
 #     '%m_%d_%Y') + 'hotel_journal_summary'
 #
