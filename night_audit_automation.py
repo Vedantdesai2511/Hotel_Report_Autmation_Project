@@ -84,9 +84,36 @@ def night_audit_automation():
 
     pyautogui.hotkey('backspace')
 
+    time.sleep(0.5)
+
     pyautogui.write((datetime.today() + relativedelta(days=-1)).strftime('%m/%d/%Y'))
+
+    time.sleep(0.5)
+
+    driver.find_element_by_xpath('// *[(@ id = "doSubmit")]').click()
+
+    time.sleep(5)
+
+    pyautogui.keyDown('ctrl')
+    pyautogui.press('s')
+    pyautogui.keyUp('ctrl')
+
+    time.sleep(2)
+    # (datetime.today()).strftime('%m_%d_%Y')
+    name_of_the_file_HK_1 = (datetime.today()).strftime('%m_%d_%Y') + 'hotel_journal_summary'
+    pyautogui.write((datetime.today()).strftime('%m_%d_%Y') + 'hotel_journal_summary')
+
+    time.sleep(1)
+
+    pyautogui.hotkey('enter')
+
+    time.sleep(1)
+
+    driver.switch_to.window(driver.window_handles[0])
+
+    time.sleep(1)
+
+    pyautogui.hotkey('enter')
 
 
 # night_audit_automation()
-
-print((datetime.today() + relativedelta(days=-1)).strftime('%m/%d/%Y'))
