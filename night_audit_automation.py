@@ -123,5 +123,5 @@ def night_audit_automation():
                         root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
                         stream=True, pages=1)
 
-
+    
 # night_audit_automation()
