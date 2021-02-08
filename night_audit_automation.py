@@ -180,19 +180,21 @@ pyautogui.hotkey('enter')
 
 time.sleep(3)
 
-driver.find_element_by_xpath('//*[(@ id = "act6")]').click()
+# driver.find_element_by_xpath('//*[(@ id = "act6")]').click()
+#
+# # driver.find_elements_by_id('menu7_1').click()
+#
+# # Select.select_by_visible_text('Night Audit')
+#
+# a = driver.find_elements_by_xpath('//*[text() = "Night Audit"]').click()
+#
+# print(a)
+#
+# a = ['<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="50d68991-fe7d-4b3f-95b8-a3da9c73d10f")>', '<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="dee98abd-c8d4-4166-8ab6-2d43fcf73e6d")>']
+#
+# print(a[0])
+# # driver.find_elements_by_xpath('//*[text() = "Night Audit"]')[0].click()
+# # select by visible text
+# # select.select_by_visible_text('Banana')
 
-# driver.find_elements_by_id('menu7_1').click()
-
-# Select.select_by_visible_text('Night Audit')
-
-a = driver.find_elements_by_xpath('//*[text() = "Night Audit"]').click()
-
-print(a)
-
-a = ['<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="50d68991-fe7d-4b3f-95b8-a3da9c73d10f")>', '<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="dee98abd-c8d4-4166-8ab6-2d43fcf73e6d")>']
-
-print(a[0])
-# driver.find_elements_by_xpath('//*[text() = "Night Audit"]')[0].click()
-# select by visible text
-# select.select_by_visible_text('Banana')
+driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
