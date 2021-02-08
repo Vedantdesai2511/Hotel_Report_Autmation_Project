@@ -288,8 +288,8 @@ def report_automation():
         os.remove(file)
 
 
-# schedule.every().day.at("07:30").do(report_automation)
-report_automation()
+schedule.every().day.at("07:30").do(report_automation)
+# report_automation()
 
 while True:
     schedule.run_pending()
