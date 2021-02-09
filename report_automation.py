@@ -189,6 +189,23 @@ def report_automation():
 
         # a[1].send_keys("agsfdyuigasif")
 
+    def email_occupancy_snap_shot_reports_using_libraries():
+        # receiver = ["reportautomation1@gmail.com"]
+        receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
+        body = "Report"
+        # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
+        filenames = root_directory.format(name_of_the_file_ + '.pdf')
+
+        yag = yagmail.SMTP("reportautomation1@gmail.com")
+        yag.send(
+            to=receiver,
+            subject="Report_" + (datetime.today()).strftime('%m_%d_%Y'),
+            contents=body,
+            attachments=filenames,
+        )
+
+    email_occupancy_snap_shot_reports_using_libraries()
+
     driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
 
     (name_of_the_file_, name_of_the_file_HK_1_, name_of_the_file_HK_2_) = report_download_automation()
@@ -225,23 +242,6 @@ def report_automation():
     yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
 
     # respectively
-
-    def email_occupancy_snap_shot_reports_using_libraries():
-        # receiver = ["reportautomation1@gmail.com"]
-        receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
-        body = "Report"
-        # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
-        filenames = root_directory.format(name_of_the_file_ + '.pdf')
-
-        yag = yagmail.SMTP("reportautomation1@gmail.com")
-        yag.send(
-            to=receiver,
-            subject="Report_" + (datetime.today()).strftime('%m_%d_%Y'),
-            contents=body,
-            attachments=filenames,
-        )
-
-    email_occupancy_snap_shot_reports_using_libraries()
 
     def email_occupancy_snap_shot_reports_using_libraries_():
         receiver = ["reportautomation1@gmail.com"]
