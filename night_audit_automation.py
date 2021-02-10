@@ -130,55 +130,66 @@ def night_audit_automation():
 
     time.sleep(5)
 
-    driver.find_element_by_xpath('//*[(@id = "bannerFavButton_14")]').click()
+    # driver.find_element_by_xpath('//*[(@id = "bannerFavButton_14")]').click()
 
-    time.sleep(5)
+    # time.sleep(5)
 
     # driver.find_elements_by_class_name("CHI_Button")
 
-    driver.find_element_by_xpath('// *[(@ id = "act6")] / option[text() = "Night Audit"]').click()
+    driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
 
-# night_audit_automation()
+    time.sleep(3)
+
+    driver.find_element_by_xpath('// *[(@ id = "runNightAudit")]').click()
+
+    time.sleep(5)
+
+    pyautogui.write(str(cash_value))
+
+    # driver.find_element_by_xpath('// *[(@ id = "act6")] / option[text() = "Night Audit"]').click()
 
 
-print("I am here")
-time.sleep(1)
+night_audit_automation()
 
-driver.get(link_to_open)
 
-driver.execute_script("window.open()")
-
-driver.switch_to.window(driver.window_handles[1])
-
-main_window = driver.switch_to.window(driver.window_handles[0])
-
-print(main_window)
-
-time.sleep(0.5)
-
-e = driver.find_elements_by_class_name("CHI_Cell")
-
-print(e)
-time.sleep(1)
-
-a = driver.find_element_by_xpath("//input")
+# print("I am here")
+# time.sleep(1)
+#
+# driver.get(link_to_open)
+#
+# driver.execute_script("window.open()")
+#
+# driver.switch_to.window(driver.window_handles[1])
+#
+# main_window = driver.switch_to.window(driver.window_handles[0])
+#
+# print(main_window)
+#
+# time.sleep(0.5)
+#
+# e = driver.find_elements_by_class_name("CHI_Cell")
+#
+# print(e)
+# time.sleep(1)
+#
+# a = driver.find_element_by_xpath("//input")
 # e.send_keys("vedantdesai07@gmail.com")
 
-print(a)
-
-a.send_keys("Vdesai.TXI54")
-
-pyautogui.hotkey('tab')
-
-pyautogui.write('Vbd@251196')
-
-pyautogui.hotkey('tab')
-
-pyautogui.hotkey('enter')
+# print(a)
+#
+# a.send_keys("Vdesai.TXI54")
+#
+# pyautogui.hotkey('tab')
+#
+# pyautogui.write('Vbd@251196')
+#
+# pyautogui.hotkey('tab')
+#
+# pyautogui.hotkey('enter')
 # driver.find_element_by_xpath(
 #     '//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]').click()
 
-time.sleep(3)
+# time.sleep(3)
 
 # driver.find_element_by_xpath('//*[(@ id = "act6")]').click()
 #
@@ -197,4 +208,4 @@ time.sleep(3)
 # # select by visible text
 # # select.select_by_visible_text('Banana')
 
-driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
+# driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
