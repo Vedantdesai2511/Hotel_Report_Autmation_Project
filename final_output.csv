@@ -1,0 +1,7 @@
+,Room,Type,People,Status,Condition,Stay/C/O,Service,Housekeeper,Update,Notes,Arrival,Departure,Last Clean
+0,102,NK,1/0,OCC,Dirty,C/O,None,,,,1/25/21,2/10/21,1/30/21
+2,105,NK,2/0,OCC,Dirty,C/O,None,,,,2/9/21,2/10/21,2/9/21
+6,114,NQQ,1/0,OCC,Dirty,C/O,None,,,,2/7/21,2/10/21,2/7/21
+15,215,SNQQ,1/0,OCC,Dirty,C/O,None,,,,1/29/21,2/10/21,1/29/21
+17,218,SNK,1/0,OCC,Dirty,C/O,None,,,,1/27/21,2/10/21,1/26/21
+1,111,NQQ,,VAC,Dirty,,,,,,,,8/30/19

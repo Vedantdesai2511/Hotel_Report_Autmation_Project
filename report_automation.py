@@ -231,7 +231,6 @@ def report_automation():
 
     email_occupancy_snap_shot_reports_using_libraries_()
 
-
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
 
@@ -254,6 +253,31 @@ def report_automation():
 
     df = pd.read_csv('final_output.csv', sep=',')
     df.to_html(html_file)
+
+    file = open('final_output.html', 'r')
+    a = file.read()
+
+    # file = codecs.open("final_output.html", "r", "utf-8")  # different method to open the html file
+    # a = file.read()
+
+    f = open('final_output.html', 'w')
+
+    message = """<style>
+        th {
+          font-size: 20px;
+        }
+
+        td {
+          font-size: 30px;
+        }
+        </style>
+
+        """ + a
+
+    # print(f.read())
+
+    f.write(message)
+    f.close()
 
     pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
 
@@ -295,4 +319,3 @@ report_automation()
 while True:
     schedule.run_pending()
     time.sleep(1)
-

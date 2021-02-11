@@ -146,6 +146,10 @@ def night_audit_automation():
 
     pyautogui.write(str(cash_value))
 
+    time.sleep(2)
+
+    pyautogui.hotkey('enter')
+
     # driver.find_element_by_xpath('// *[(@ id = "act6")] / option[text() = "Night Audit"]').click()
 
 
