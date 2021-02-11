@@ -197,25 +197,8 @@ def report_automation():
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
 
-    def email_occupancy_snap_shot_reports_using_libraries():
+    def email_occupancy_snap_shot_reports_using_libraries(receiver):
         # receiver = ["reportautomation1@gmail.com"]
-        receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
-        body = "Report"
-        # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
-        filenames = root_directory.format(name_of_the_file_ + '.pdf')
-
-        yag = yagmail.SMTP("reportautomation1@gmail.com")
-        yag.send(
-            to=receiver,
-            subject="Report_" + (datetime.today()).strftime('%m_%d_%Y'),
-            contents=body,
-            attachments=filenames,
-        )
-
-    email_occupancy_snap_shot_reports_using_libraries()
-
-    def email_occupancy_snap_shot_reports_using_libraries_():
-        receiver = ["reportautomation1@gmail.com"]
         # receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
         body = "Report"
         # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
@@ -229,7 +212,24 @@ def report_automation():
             attachments=filenames,
         )
 
-    email_occupancy_snap_shot_reports_using_libraries_()
+    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+    # def email_occupancy_snap_shot_reports_using_libraries_():
+    #     receiver = ["reportautomation1@gmail.com"]
+    #     # receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
+    #     body = "Report"
+    #     # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
+    #     filenames = root_directory.format(name_of_the_file_ + '.pdf')
+    #
+    #     yag = yagmail.SMTP("reportautomation1@gmail.com")
+    #     yag.send(
+    #         to=receiver,
+    #         subject="Report_" + (datetime.today()).strftime('%m_%d_%Y'),
+    #         contents=body,
+    #         attachments=filenames,
+    #     )
+
+    # email_occupancy_snap_shot_reports_using_libraries_()
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
