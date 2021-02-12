@@ -228,9 +228,18 @@ hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=
 
 # tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),'abc.csv')
 
-import camelot
+# import camelot
+#
+# tables = camelot.read_pdf(root_directory.format(hotel_journal_summary_report_file_name + '.pdf', pages="1-end"))
+#
+# tables.export("camelot_tables.csv", f="csv")
 
-tables = camelot.read_pdf(root_directory.format(hotel_journal_summary_report_file_name + '.pdf', pages="1-end"))
+# import pdftables_api
 
-tables.export("camelot_tables.csv", f="csv")
+# c = pdftables_api.Client('ewtqttj2079m')
+# c.csv(hotel_journal_summary_report_file_name + '.pdf', 'output')
 
+cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
+        'output' + '.csv')
+
+print(cash_value)
