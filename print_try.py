@@ -140,7 +140,17 @@ def report_automation():
 
         pyautogui.hotkey('enter')
 
-        time.sleep(1)
+        time.sleep(5)
+
+        pyautogui.keyDown('ctrl')
+        pyautogui.press('p')
+        pyautogui.keyUp('ctrl')
+
+        time.sleep(5)
+
+        pyautogui.hotkey('enter')
+
+        time.sleep(2)
 
         driver.switch_to.window(driver.window_handles[0])
 
@@ -213,8 +223,11 @@ def report_automation():
             attachments=filenames,
         )
 
-    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
-    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+    # email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    # email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+
+
+
     # def email_occupancy_snap_shot_reports_using_libraries_():
     #     receiver = ["reportautomation1@gmail.com"]
     #     # receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
@@ -302,7 +315,7 @@ def report_automation():
             attachments=filenames,
         )
 
-    email_house_keeping_check_off_list_reports_using_libraries()
+    # email_house_keeping_check_off_list_reports_using_libraries()
 
     time.sleep(10)
 
@@ -314,9 +327,10 @@ def report_automation():
         os.remove(file)
 
 
-schedule.every().day.at("07:12").do(report_automation)
-schedule.every().day.at("01:05").do(night_audit_automation)
+# schedule.every().day.at("07:12").do(report_automation)
+# schedule.every().day.at("01:05").do(night_audit_automation)
 # night_audit_automation()
+report_automation()
 
 while True:
     schedule.run_pending()
