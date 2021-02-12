@@ -226,6 +226,11 @@ root_directory = r'C:\Users\vedan\Downloads\{}'
 hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
     '%m_%d_%Y') + 'hotel_journal_summary'
 
-tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),'abc.csv', output_format="csv",
-                    stream=True, pages=1)
+# tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),'abc.csv')
+
+import camelot
+
+tables = camelot.read_pdf(root_directory.format(hotel_journal_summary_report_file_name + '.pdf', pages="1-end"))
+
+tables.export("camelot_tables.csv", f="csv")
 
