@@ -3,10 +3,13 @@ import time
 import pyautogui
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-import tabula
+# import tabula
 from selenium.webdriver import ActionChains
 import hotel_journal_summary_report_analysis
-from selenium.webdriver.support.select import Select
+# from selenium.webdriver.support.select import Select
+import shutil
+import os
+import pdftables_api
 
 
 # driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
@@ -118,14 +121,21 @@ def night_audit_automation():
 
     hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary'
 
-    tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
-                        root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
-                        stream=True, pages=1)
+    shutil.move(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'), os.path.dirname(os.path.realpath(__file__)))
+
+    c = pdftables_api.Client('ewtqttj2079m')
+    c.csv(hotel_journal_summary_report_file_name + '.pdf', root_directory.format(hotel_journal_summary_report_file_name))
+
+    # tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),
+    #                     root_directory.format(hotel_journal_summary_report_file_name + '.csv'), output_format="csv",
+    #                     stream=True, pages=1)
 
     time.sleep(5)
 
+    # cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
+    #     root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
     cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
-        root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
+        'output' + '.csv')
 
     print(cash_value)
 
@@ -212,7 +222,9 @@ def night_audit_automation():
 #
 # print(a)
 #
-# a = ['<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="50d68991-fe7d-4b3f-95b8-a3da9c73d10f")>', '<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a", element="dee98abd-c8d4-4166-8ab6-2d43fcf73e6d")>']
+# a = ['<selenium.webdriver.remote.webelement.WebElement (session="b795e3a76eea02332b5b546865cbe69a",
+# element="50d68991-fe7d-4b3f-95b8-a3da9c73d10f")>', '<selenium.webdriver.remote.webelement.WebElement (
+# session="b795e3a76eea02332b5b546865cbe69a", element="dee98abd-c8d4-4166-8ab6-2d43fcf73e6d")>']
 #
 # print(a[0])
 # # driver.find_elements_by_xpath('//*[text() = "Night Audit"]')[0].click()
@@ -221,10 +233,10 @@ def night_audit_automation():
 
 # driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
 
-root_directory = r'C:\Users\vedan\Downloads\{}'
-
-hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
-    '%m_%d_%Y') + 'hotel_journal_summary'
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
+#     '%m_%d_%Y') + 'hotel_journal_summary'
 
 # tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),'abc.csv')
 
@@ -239,7 +251,7 @@ hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=
 # c = pdftables_api.Client('ewtqttj2079m')
 # c.csv(hotel_journal_summary_report_file_name + '.pdf', 'output')
 
-cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
-        'output' + '.csv')
-
-print(cash_value)
+# cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
+#         'output' + '.csv')
+#
+# print(cash_value)

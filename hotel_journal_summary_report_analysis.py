@@ -4,12 +4,26 @@ import pandas as pd
 def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report):
     df1 = pd.read_csv(hotel_journal_summary_report)
 
+    df1.drop([0, 1], inplace=True)
+
+    df1.reset_index(inplace=True)  # Resets the index, makes factor a column
+    df1.drop("Hotel Journal Summary", axis=1,
+             inplace=True)  # drop factor from axis 1 and make changes permanent by inplace=True
+    df1.drop("index", axis=1, inplace=True)  # drop factor from axis 1 and make changes permanent by inplace=True
+
+    # print(df1.columns)
+    # print(df1)
+    # print(df1['Unnamed: 1'])
+    # print(df1['Unnamed: 1'][1])
+
+    value = str(df1['Unnamed: 1'][1])
+
     # print(df1.columns)
 
     # print(df1['Description (Transaction'])
-    a = df1.loc[df1['Description (Transaction'] == 'Cash (CA)']
+    # a = df1.loc[df1['Description (Transaction'] == 'Cash (CA)']
     # df2.loc[df2['Stay/C/O'] == "Stay"
-    value = str(a['Postings1'])
+    # value = str(a['Postings1'])
     print(float(value[(value.find('(') + 1):value.find(')')]))
 
     return float(value[(value.find('(') + 1):value.find(')')])
@@ -30,18 +44,20 @@ def hotel_journal_summary_report_analysis_function(hotel_journal_summary_report)
     # final_output.to_csv("final_output.csv")
 
 
+# hotel_journal_summary_report_analysis_function('output.csv')
+
 # root_directory = r'C:\Users\vedan\Downloads\{}'
 #
 # hotel_journal_summary_report_analysis_function(root_directory.format((datetime.today() + relativedelta(
 # days=-1)).strftime('%m_%d_%Y') + 'hotel_journal_summary' + '.csv'))
 
-df1 = pd.read_csv('output.csv')
-
-print(df1.columns)
-
-df1.drop([0,1], inplace=True)
-
-print(df1.columns)
+# df1 = pd.read_csv('output.csv')
+#
+# print(df1.columns)
+#
+# df1.drop([0,1], inplace=True)
+#
+# print(df1.columns)
 
 # print(df1['Description (Transaction'])
 # a = df1.loc[df1['Description (Transaction'] == 'Cash (CA)']
@@ -49,12 +65,12 @@ print(df1.columns)
 # value = str(a['Postings1'])
 # print(float(value[(value.find('(') + 1):value.find(')')]))
 
-df1.reset_index(inplace=True) # Resets the index, makes factor a column
-df1.drop("Hotel Journal Summary",axis=1,inplace=True) # drop factor from axis 1 and make changes permanent by inplace=True
-df1.drop("index",axis=1,inplace=True) # drop factor from axis 1 and make changes permanent by inplace=True
-
-print(df1.columns)
-print(df1)
-print(df1['Unnamed: 1'])
-print(df1['Unnamed: 1'][1])
+# df1.reset_index(inplace=True) # Resets the index, makes factor a column
+# df1.drop("Hotel Journal Summary",axis=1,inplace=True) # drop factor from axis 1 and make changes permanent by inplace=True
+# df1.drop("index",axis=1,inplace=True) # drop factor from axis 1 and make changes permanent by inplace=True
+#
+# print(df1.columns)
+# print(df1)
+# print(df1['Unnamed: 1'])
+# print(df1['Unnamed: 1'][1])
 # return float(value[(value.find('(') + 1):value.find(')')])

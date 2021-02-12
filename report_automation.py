@@ -315,8 +315,8 @@ def report_automation():
 
 
 schedule.every().day.at("07:30").do(report_automation)
-# schedule.every().day.at("01:05").do(night_audit_automation)
-night_audit_automation()
+schedule.every().day.at("01:05").do(night_audit_automation)
+# night_audit_automation()
 
 while True:
     schedule.run_pending()
