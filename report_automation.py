@@ -11,6 +11,7 @@ import tabula
 import data_management_house_keeping
 import pdfkit
 import pandas as pd
+from night_audit_automation import night_audit_automation
 
 
 def report_automation():
@@ -313,8 +314,9 @@ def report_automation():
         os.remove(file)
 
 
-# schedule.every().day.at("07:30").do(report_automation)
-report_automation()
+schedule.every().day.at("07:30").do(report_automation)
+# schedule.every().day.at("01:05").do(night_audit_automation)
+night_audit_automation()
 
 while True:
     schedule.run_pending()

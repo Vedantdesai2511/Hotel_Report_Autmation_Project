@@ -9,14 +9,21 @@ import hotel_journal_summary_report_analysis
 from selenium.webdriver.support.select import Select
 
 
-driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
-
-action = ActionChains(driver)
-
-link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
+# driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
+#
+# action = ActionChains(driver)
+#
+# link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
 
 
 def night_audit_automation():
+    driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
+
+    action = ActionChains(driver)
+
+    link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
+
+
     print("I am here")
     time.sleep(1)
 
@@ -153,7 +160,7 @@ def night_audit_automation():
     # driver.find_element_by_xpath('// *[(@ id = "act6")] / option[text() = "Night Audit"]').click()
 
 
-night_audit_automation()
+# night_audit_automation()
 
 
 # print("I am here")
@@ -213,3 +220,12 @@ night_audit_automation()
 # # select.select_by_visible_text('Banana')
 
 # driver.get('https://www.choiceadvantage.com/choicehotels/NightAuditInitialize.init')
+
+root_directory = r'C:\Users\vedan\Downloads\{}'
+
+hotel_journal_summary_report_file_name = (datetime.today() + relativedelta(days=-1)).strftime(
+    '%m_%d_%Y') + 'hotel_journal_summary'
+
+tabula.convert_into(root_directory.format(hotel_journal_summary_report_file_name + '.pdf'),'abc.csv', output_format="csv",
+                    stream=True, pages=1)
+

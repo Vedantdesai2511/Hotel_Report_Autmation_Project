@@ -6,7 +6,7 @@ import pdfkit
 
 def house_keeping_report_function(report_1, report_2, room_list=None):
     if room_list is None:
-        room_list = [107, 211]
+        room_list = [107, 211, 202]
 
     df1 = pd.read_csv(report_1)
     df2 = pd.read_csv(report_2)
