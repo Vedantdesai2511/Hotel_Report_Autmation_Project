@@ -12,6 +12,7 @@ import data_management_house_keeping
 import pdfkit
 import pandas as pd
 from night_audit_automation import night_audit_automation
+from print_on_the_specific_printer import print_the_file
 
 
 def report_automation():
@@ -140,7 +141,17 @@ def report_automation():
 
         pyautogui.hotkey('enter')
 
-        time.sleep(1)
+        time.sleep(5)
+
+        pyautogui.keyDown('ctrl')
+        pyautogui.press('p')
+        pyautogui.keyUp('ctrl')
+
+        time.sleep(5)
+
+        pyautogui.hotkey('enter')
+
+        time.sleep(5)
 
         driver.switch_to.window(driver.window_handles[0])
 
@@ -150,6 +161,18 @@ def report_automation():
         Select(driver.find_element_by_xpath('// select')).select_by_visible_text('Occupied')
 
         driver.find_element_by_xpath('// *[(@ id = "doSubmit")]').click()
+
+        time.sleep(5)
+
+        time.sleep(5)
+
+        pyautogui.keyDown('ctrl')
+        pyautogui.press('p')
+        pyautogui.keyUp('ctrl')
+
+        time.sleep(5)
+
+        pyautogui.hotkey('enter')
 
         time.sleep(5)
 
@@ -213,24 +236,8 @@ def report_automation():
             attachments=filenames,
         )
 
-    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
-    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
-    # def email_occupancy_snap_shot_reports_using_libraries_():
-    #     receiver = ["reportautomation1@gmail.com"]
-    #     # receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
-    #     body = "Report"
-    #     # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
-    #     filenames = root_directory.format(name_of_the_file_ + '.pdf')
-    #
-    #     yag = yagmail.SMTP("reportautomation1@gmail.com")
-    #     yag.send(
-    #         to=receiver,
-    #         subject="Report_" + (datetime.today()).strftime('%m_%d_%Y'),
-    #         contents=body,
-    #         attachments=filenames,
-    #     )
-
-    # email_occupancy_snap_shot_reports_using_libraries_()
+    # email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    # email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
@@ -284,7 +291,7 @@ def report_automation():
 
     time.sleep(2)
 
-    yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
+    # yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
     # respectively
 
     def email_house_keeping_check_off_list_reports_using_libraries():
@@ -304,6 +311,8 @@ def report_automation():
 
     email_house_keeping_check_off_list_reports_using_libraries()
 
+    print_the_file('house_keeping_report.pdf')
+
     time.sleep(10)
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
@@ -314,9 +323,10 @@ def report_automation():
         os.remove(file)
 
 
-schedule.every().day.at("07:12").do(report_automation)
-schedule.every().day.at("01:05").do(night_audit_automation)
+# schedule.every().day.at("07:12").do(report_automation)
+# schedule.every().day.at("01:05").do(night_audit_automation)
 # night_audit_automation()
+report_automation()
 
 while True:
     schedule.run_pending()

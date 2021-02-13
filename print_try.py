@@ -176,7 +176,17 @@ def report_automation():
 
         pyautogui.hotkey('enter')
 
-        time.sleep(1)
+        time.sleep(5)
+
+        pyautogui.keyDown('ctrl')
+        pyautogui.press('p')
+        pyautogui.keyUp('ctrl')
+
+        time.sleep(5)
+
+        pyautogui.hotkey('enter')
+
+        time.sleep(3)
 
         driver.close()
 
