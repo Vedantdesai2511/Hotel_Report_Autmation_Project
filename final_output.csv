@@ -1,6 +1,13 @@
 ,Room,Type,People,Status,Condition,Stay/C/O,Service,Housekeeper,Update,Notes,Arrival,Departure,Last Clean
-10,218,SNK,1/0,OCC,Dirty,,,,,,2/12/21,2/23/21,2/10/21
-0,102,NK,,VAC,Dirty,C/O,,,,,,,2/11/21
-1,105,NK,,VAC,Dirty,,,,,,,,2/10/21
-3,111,NQQ,,VAC,Dirty,,,,,,,,8/30/19
-5,209,NK,,VAC,Dirty,,,,,,,,2/9/21
+6,206,NK,1/0,OCC,Dirty,C/O,None,,,,2/3/21,2/14/21,2/3/21
+7,207,NQQ,1/0,OCC,Dirty,C/O,None,,,,2/3/21,2/14/21,2/1/21
+9,209,NK,1/0,OCC,Dirty,C/O,None,,,,2/13/21,2/14/21,2/9/21
+11,214,NK,2/0,OCC,Dirty,C/O,,,,,1/27/21,2/14/21,1/27/21
+14,220,SNK,1/0,OCC,Dirty,C/O,None,,,,2/13/21,2/14/21,2/12/21
+0,102,NK,,VAC,Dirty,,,,,,,,2/13/21
+1,103,NHK1,,VAC,Dirty,,,,,,,,2/12/21
+2,105,NK,,VAC,Dirty,,,,,,,,2/13/21
+4,111,NQQ,,VAC,Dirty,,,,,,,,8/30/19
+6,204,NK,,VAC,Dirty,,,,,,,,2/13/21
+8,216,SNQQ,,VAC,Dirty,,,,,,,,2/9/21
+9,217,SNQQ,,VAC,Dirty,,,,,,,,2/10/21

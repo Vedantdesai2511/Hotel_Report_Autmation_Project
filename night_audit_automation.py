@@ -64,15 +64,15 @@ def night_audit_automation():
     # driver.find_element_by_xpath(
     #     '//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]').click()
 
-    time.sleep(3)
+    time.sleep(5)
 
     driver.find_element_by_xpath('// *[(@ id = "bannerFavButton_5")]').click()
 
-    time.sleep(3)
+    time.sleep(5)
 
     driver.find_element_by_xpath('// *[(@ id = "HotelJournalSummaryReport")]').click()
 
-    time.sleep(3)
+    time.sleep(5)
 
     input_elemwnt = driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", '
                                                  '"hasDatepicker", " " ))]')
@@ -132,10 +132,10 @@ def night_audit_automation():
 
     time.sleep(5)
 
-    # cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
-    #     root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
     cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
-        'output' + '.csv')
+        root_directory.format(hotel_journal_summary_report_file_name) + '.csv')
+    # cash_value = hotel_journal_summary_report_analysis.hotel_journal_summary_report_analysis_function(
+    #     'output' + '.csv')
 
     print(cash_value)
 
@@ -167,11 +167,16 @@ def night_audit_automation():
 
     pyautogui.hotkey('enter')
 
+    time.sleep(10)
+
+    files = [hotel_journal_summary_report_file_name + '.pdf']
+
+    for file in files:
+        os.remove(file)
     # driver.find_element_by_xpath('// *[(@ id = "act6")] / option[text() = "Night Audit"]').click()
 
 
 # night_audit_automation()
-
 
 # print("I am here")
 # time.sleep(1)

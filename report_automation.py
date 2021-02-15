@@ -221,6 +221,8 @@ def report_automation():
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
 
+    yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
+
     def email_occupancy_snap_shot_reports_using_libraries(receiver):
         # receiver = ["reportautomation1@gmail.com"]
         # receiver = ["sumit@dalwadi.com", "nathan.overton@dalwadi.com"]
@@ -236,8 +238,8 @@ def report_automation():
             attachments=filenames,
         )
 
-    # email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
-    # email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
@@ -291,7 +293,6 @@ def report_automation():
 
     time.sleep(2)
 
-    # yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
     # respectively
 
     def email_house_keeping_check_off_list_reports_using_libraries():
@@ -323,10 +324,10 @@ def report_automation():
         os.remove(file)
 
 
-# schedule.every().day.at("07:12").do(report_automation)
+schedule.every().day.at("07:30").do(report_automation)
 # schedule.every().day.at("01:05").do(night_audit_automation)
-# night_audit_automation()
-report_automation()
+night_audit_automation()
+# report_automation()
 
 while True:
     schedule.run_pending()
