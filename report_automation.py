@@ -13,6 +13,7 @@ import pdfkit
 import pandas as pd
 from night_audit_automation import night_audit_automation
 from print_on_the_specific_printer import print_the_file
+import pdftables_api
 
 
 def report_automation():
@@ -59,15 +60,15 @@ def report_automation():
         # driver.find_element_by_xpath(
         #     '//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]').click()
 
-        time.sleep(3)
+        time.sleep(5)
 
         driver.find_element_by_xpath('// *[(@ id = "bannerFavButton_5")]').click()
 
-        time.sleep(1.5)
+        time.sleep(5)
 
         driver.find_element_by_xpath('// *[(@ id = "OccupancySnapshotReport")]').click()
 
-        time.sleep(1.5)
+        time.sleep(5)
 
         a = driver.find_element_by_class_name('datepickerField')
 
@@ -75,13 +76,15 @@ def report_automation():
 
         driver.find_element_by_class_name('datepickerField').click()
 
+        time.sleep(3)
+
         pyautogui.hotkey('tab')
 
-        time.sleep(0.5)
+        time.sleep(1)
 
         pyautogui.hotkey('backspace')
 
-        time.sleep(0.5)
+        time.sleep(1)
 
         # for i in range(3):
         #     pyautogui.hotkey('')
@@ -97,7 +100,7 @@ def report_automation():
         pyautogui.hotkey('enter')
         # N = 1  # number of times you want to press TAB
 
-        time.sleep(5)
+        time.sleep(10)
 
         pyautogui.keyDown('ctrl')
         pyautogui.press('s')
@@ -238,6 +241,8 @@ def report_automation():
             attachments=filenames,
         )
 
+        print("Report sent")
+
     email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
     email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
@@ -289,11 +294,11 @@ def report_automation():
     f.write(message)
     f.close()
 
+    print("Printing combined House-keeping Report")
+
     pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
 
     time.sleep(2)
-
-    # respectively
 
     def email_house_keeping_check_off_list_reports_using_libraries():
         receiver = ["econolodgehtx@dalwadi.com"]
@@ -310,9 +315,11 @@ def report_automation():
             attachments=filenames,
         )
 
-    email_house_keeping_check_off_list_reports_using_libraries()
+        print("House keeping combined report sent")
 
-    print_the_file('house_keeping_report.pdf')
+    # email_house_keeping_check_off_list_reports_using_libraries()
+
+    # print_the_file('house_keeping_report.pdf')
 
     time.sleep(10)
 
@@ -325,10 +332,10 @@ def report_automation():
 
 
 schedule.every().day.at("07:30").do(report_automation)
-# schedule.every().day.at("01:05").do(night_audit_automation)
-night_audit_automation()
+# schedule.every().day.at("01:05").do(night_audit_automation)03_08_2021report
+# night_audit_automation()
 # report_automation()
 
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(5)
