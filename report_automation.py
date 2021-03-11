@@ -7,23 +7,18 @@ from selenium.webdriver.support.select import Select
 import yagmail
 import schedule
 import os
-import tabula
-import data_management_house_keeping
+# import tabula
+# import data_management_house_keeping
 import data_management_house_keeping_new
-import pdfkit
-import pandas as pd
-from night_audit_automation import night_audit_automation
-from print_on_the_specific_printer import print_the_file
+# import pdfkit
+# import pandas as pd
+# from night_audit_automation import night_audit_automation
+# from print_on_the_specific_printer import print_the_file
 import pdftables_api
 
 
 def report_automation():
     link_to_open = "https://www.choiceadvantage.com/choicehotels/sign_in.jsp"
-
-    # root_directory = r'C:\Users\vedan\Downloads\{}'
-    # open_link(link_to_open)
-
-    from selenium.webdriver.common.action_chains import ActionChains
 
     def report_download_automation():
         print("I am here")
@@ -35,7 +30,7 @@ def report_automation():
 
         driver.switch_to.window(driver.window_handles[1])
 
-        main_window = driver.switch_to.window(driver.window_handles[0])
+        # main_window = driver.switch_to.window(driver.window_handles[0])
 
         time.sleep(0.5)
 
@@ -198,26 +193,6 @@ def report_automation():
         driver.close()
 
         return name_of_the_file, name_of_the_file_HK_1, name_of_the_file_HK_2
-        # driver.close()
-        # actions = ActionChains(driver)
-        # for _ in range(N):
-        #     time.sleep(0.5)
-        #     actions = actions.send_keys(Keys.TAB)
-        # actions.perform()
-        #
-        # actions.send_keys("abc")
-        #
-        # actions.perform()
-        # a = driver.find_element_by_xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_PageSection", " " ))]')
-        #
-        # time.sleep(1)
-        # a.sendKeys(Keys.TAB)
-        # time.sleep(0.5)
-        # a.sendKeys(Keys.TAB)
-        # a.sendKeys(Keys.TAB)
-        # a = driver.find_element_by_xpath('//*+[contains(concat( " ", @class, " " ), concat( " ", "CHI_Row", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "CHI_Row", " " ))]//input')
-
-        # a[1].send_keys("agsfdyuigasif")
 
     driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
 
@@ -244,8 +219,8 @@ def report_automation():
 
         print("Report sent")
 
-    # email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
-    # email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
@@ -256,77 +231,31 @@ def report_automation():
 
     c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
           root_directory.format(name_of_the_file_HK_2_))
-    # tabula.convert_into(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
-    #                     root_directory.format(name_of_the_file_HK_1_ + '.csv'), output_format="csv", stream=True,
-    #                     pages=1)
-    # tabula.convert_into(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
-    #                     root_directory.format(name_of_the_file_HK_2_ + '.csv'), output_format="csv", stream=True,
-    #                     pages=1)
 
     data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
                                                                root_directory.format(name_of_the_file_HK_2_ + '.csv'),
                                                                room_list=None)
 
-    # path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    #
-    # csv_file = 'final_output.csv'
-    # html_file = csv_file[:-3] + 'html'
-    #
-    # df = pd.read_csv('final_output.csv', sep=',')
-    # df.to_html(html_file)
-    #
-    # file = open('final_output.html', 'r')
-    # a = file.read()
-    #
-    # # file = codecs.open("final_output.html", "r", "utf-8")  # different method to open the html file
-    # # a = file.read()
-    #
-    # f = open('final_output.html', 'w')
-    #
-    # message = """<style>
-    #     th {
-    #       font-size: 20px;
-    #     }
-    #
-    #     td {
-    #       font-size: 30px;
-    #     }
-    #     </style>
-    #
-    #     """ + a
-    #
-    # # print(f.read())
-    #
-    # f.write(message)
-    # f.close()
-    #
-    # print("Printing combined House-keeping Report")
-    #
-    # pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
-
     time.sleep(2)
 
-    def email_house_keeping_check_off_list_reports_using_libraries():
-        receiver = ["econolodgehtx@dalwadi.com"]
-        # receiver = ["reportautomation1@gmail.com"]
-        body = ""
-        # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
-        filenames = ['house_keeping_report.pdf', root_directory.format(name_of_the_file_HK_1_ + '.pdf'), root_directory.format(name_of_the_file_HK_2_ + '.pdf')]
-
-        yag = yagmail.SMTP("reportautomation1@gmail.com")
-        yag.send(
-            to=receiver,
-            subject="HK_Report_" + (datetime.today()).strftime('%m_%d_%Y'),
-            contents=body,
-            attachments=filenames,
-        )
-
-        print("House keeping combined report sent")
+    # def email_house_keeping_check_off_list_reports_using_libraries():
+    #     receiver = ["econolodgehtx@dalwadi.com"]
+    #     # receiver = ["reportautomation1@gmail.com"]
+    #     body = ""
+    #     # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
+    #     filenames = ['house_keeping_report.pdf', root_directory.format(name_of_the_file_HK_1_ + '.pdf'), root_directory.format(name_of_the_file_HK_2_ + '.pdf')]
+    #
+    #     yag = yagmail.SMTP("reportautomation1@gmail.com")
+    #     yag.send(
+    #         to=receiver,
+    #         subject="HK_Report_" + (datetime.today()).strftime('%m_%d_%Y'),
+    #         contents=body,
+    #         attachments=filenames,
+    #     )
+    #
+    #     print("House keeping combined report sent")
 
     # email_house_keeping_check_off_list_reports_using_libraries()
-
-    # print_the_file('house_keeping_report.pdf')
 
     time.sleep(10)
 
