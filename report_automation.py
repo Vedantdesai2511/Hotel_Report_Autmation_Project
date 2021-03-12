@@ -30,7 +30,7 @@ def report_automation():
 
         driver.switch_to.window(driver.window_handles[1])
 
-        # main_window = driver.switch_to.window(driver.window_handles[0])
+        main_window = driver.switch_to.window(driver.window_handles[0])
 
         time.sleep(0.5)
 
@@ -219,7 +219,7 @@ def report_automation():
 
         print("Report sent")
 
-    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com", "nathan.overton@dalwadi.com"])
+    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com"])
     email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
