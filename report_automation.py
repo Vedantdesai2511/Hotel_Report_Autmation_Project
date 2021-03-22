@@ -266,12 +266,45 @@ def report_automation():
     for file in files:
         os.remove(file)
 
+    print("Files deleted successfully")
+
 
 # schedule.every().day.at("07:30").do(report_automation)
 # schedule.every().day.at("01:05").do(night_audit_automation)03_08_2021report
 # night_audit_automation()
-report_automation()
+# report_automation()
 
-while True:
-    schedule.run_pending()
-    time.sleep(5)
+# while True:
+#     schedule.run_pending()
+#     time.sleep(5)
+
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
+# name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
+#
+# c = pdftables_api.Client('ewtqttj2079m')
+# c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
+#       root_directory.format(name_of_the_file_HK_1_))
+#
+# c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
+#       root_directory.format(name_of_the_file_HK_2_))
+#
+# data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
+#                                                            root_directory.format(name_of_the_file_HK_2_ + '.csv'),
+#                                                            room_list=None)
+
+import camelot
+import tkinter
+from PIL import EpsImagePlugin
+# EpsImagePlugin.gs_windows_binary = r'C:\Program Files\gs\gs9.53.3'
+
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+# name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
+# name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
+
+file = r'C:\Users\vedan\Downloads\abc.pdf'
+
+tables = camelot.read_pdf(file, pages="1-end")
+
+print(tables)

@@ -100,9 +100,9 @@ def house_keeping_report_function(report_1, report_2, room_list=None):
 
     pdfkit.from_file(html_file, 'house_keeping_report_.pdf', configuration=config)
 
-    # print_the_file('house_keeping_report_.pdf')
+    print_the_file('house_keeping_report_.pdf')
 
 
-root_directory = r'C:\Users\vedan\Downloads\{}'
-
-house_keeping_report_function(root_directory.format('abc.csv'), root_directory.format('abcd.csv'))
+# root_directory = r'C:\Users\vedan\Downloads\{}'
+#
+# house_keeping_report_function(root_directory.format('abc.csv'), root_directory.format('abcd.csv'))
