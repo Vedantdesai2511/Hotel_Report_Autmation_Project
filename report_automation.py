@@ -278,15 +278,15 @@ def report_automation():
 #     schedule.run_pending()
 #     time.sleep(5)
 
-# root_directory = r'C:\Users\vedan\Downloads\{}'
-#
-# name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
-# name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
-#
-# c = pdftables_api.Client('ewtqttj2079m')
+root_directory = r'C:\Users\vedan\Downloads\{}'
+
+name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
+name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
+
+# c = pdftables_api.Client('f2cewhnvg3uh')
 # c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
 #       root_directory.format(name_of_the_file_HK_1_))
-#
+
 # c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
 #       root_directory.format(name_of_the_file_HK_2_))
 #
@@ -308,3 +308,20 @@ file = r'C:\Users\vedan\Downloads\abc.pdf'
 tables = camelot.read_pdf(file, pages="1-end")
 
 print(tables)
+
+# tables.export('foo.csv', f='csv', compress=True) # json, excel, html
+# print(tables[0])
+#
+import tabula
+
+file = r'C:\Users\vedan\Downloads\abc.pdf'
+
+tables = tabula.read_pdf(file, pages="1", multiple_tables=False)
+
+print(tables)
+
+from new_file import Client
+
+a = Client(api_key='f2cewhnvg3uh').csv(pdf_path=file)
+
+print(a)
