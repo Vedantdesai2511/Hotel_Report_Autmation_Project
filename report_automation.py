@@ -7,10 +7,10 @@ from selenium.webdriver.support.select import Select
 import yagmail
 import schedule
 import os
-# import tabula
-# import data_management_house_keeping
+import tabula
+import data_management_house_keeping
 import data_management_house_keeping_new
-# import pdfkit
+import pdfkit
 # import pandas as pd
 # from night_audit_automation import night_audit_automation
 # from print_on_the_specific_printer import print_the_file
@@ -225,103 +225,153 @@ def report_automation():
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
 
-    c = pdftables_api.Client('ewtqttj2079m')
-    c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
-          root_directory.format(name_of_the_file_HK_1_))
+    tabula.convert_into(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
+                        root_directory.format(name_of_the_file_HK_1_ + '.csv'), output_format="csv", stream=True,
+                        pages=1)
+    tabula.convert_into(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
+                        root_directory.format(name_of_the_file_HK_2_ + '.csv'), output_format="csv", stream=True,
+                        pages=1)
 
-    c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
-          root_directory.format(name_of_the_file_HK_2_))
+    data_management_house_keeping.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
+                                                                root_directory.format(name_of_the_file_HK_2_ + '.csv'),
+                                                                room_list=None)
 
-    data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
-                                                               root_directory.format(name_of_the_file_HK_2_ + '.csv'),
-                                                               room_list=None)
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+    csv_file = 'final_output.csv'
+    html_file = csv_file[:-3] + 'html'
+
+    df = pd.read_csv('final_output.csv', sep=',')
+    df.to_html(html_file)
+
+    file = open('final_output.html', 'r')
+    a = file.read()
+
+    # file = codecs.open("final_output.html", "r", "utf-8")  # different method to open the html file
+    # a = file.read()
+
+    f = open('final_output.html', 'w')
+
+    message = """<style>
+            th {
+              font-size: 20px;
+            }
+
+            td {
+              font-size: 30px;
+            }
+            </style>
+
+            """ + a
+
+    # print(f.read())
+
+    f.write(message)
+    f.close()
+
+    pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
 
     time.sleep(2)
 
-    # def email_house_keeping_check_off_list_reports_using_libraries():
-    #     receiver = ["econolodgehtx@dalwadi.com"]
-    #     # receiver = ["reportautomation1@gmail.com"]
-    #     body = ""
-    #     # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
-    #     filenames = ['house_keeping_report.pdf', root_directory.format(name_of_the_file_HK_1_ + '.pdf'), root_directory.format(name_of_the_file_HK_2_ + '.pdf')]
+    # c = pdftables_api.Client('ewtqttj2079m')
+    # c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
+    #       root_directory.format(name_of_the_file_HK_1_))
     #
-    #     yag = yagmail.SMTP("reportautomation1@gmail.com")
-    #     yag.send(
-    #         to=receiver,
-    #         subject="HK_Report_" + (datetime.today()).strftime('%m_%d_%Y'),
-    #         contents=body,
-    #         attachments=filenames,
-    #     )
+    # c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
+    #       root_directory.format(name_of_the_file_HK_2_))
     #
-    #     print("House keeping combined report sent")
-
-    # email_house_keeping_check_off_list_reports_using_libraries()
-
-    time.sleep(10)
-
-    root_directory = r'C:\Users\vedan\Downloads\{}'
-    files = [root_directory.format(name_of_the_file_ + '.pdf'), root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
-             root_directory.format(name_of_the_file_HK_2_ + '.pdf'),root_directory.format(name_of_the_file_HK_2_ + '.csv'), root_directory.format(name_of_the_file_HK_1_ + '.csv')]
-
-    for file in files:
-        os.remove(file)
-
-    print("Files deleted successfully")
+    # data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
+    #                                                            root_directory.format(name_of_the_file_HK_2_ + '.csv'),
+    #                                                            room_list=None)
+    #
+    # time.sleep(2)
+    #
+    # # def email_house_keeping_check_off_list_reports_using_libraries():
+    # #     receiver = ["econolodgehtx@dalwadi.com"]
+    # #     # receiver = ["reportautomation1@gmail.com"]
+    # #     body = ""
+    # #     # root_directory = r'C:\Users\vedan\Downloads\{}.pdf'
+    # #     filenames = ['house_keeping_report.pdf', root_directory.format(name_of_the_file_HK_1_ + '.pdf'), root_directory.format(name_of_the_file_HK_2_ + '.pdf')]
+    # #
+    # #     yag = yagmail.SMTP("reportautomation1@gmail.com")
+    # #     yag.send(
+    # #         to=receiver,
+    # #         subject="HK_Report_" + (datetime.today()).strftime('%m_%d_%Y'),
+    # #         contents=body,
+    # #         attachments=filenames,
+    # #     )
+    # #
+    # #     print("House keeping combined report sent")
+    #
+    # # email_house_keeping_check_off_list_reports_using_libraries()
+    #
+    # time.sleep(10)
+    #
+    # root_directory = r'C:\Users\vedan\Downloads\{}'
+    # files = [root_directory.format(name_of_the_file_ + '.pdf'), root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
+    #          root_directory.format(name_of_the_file_HK_2_ + '.pdf'),root_directory.format(name_of_the_file_HK_2_ + '.csv'), root_directory.format(name_of_the_file_HK_1_ + '.csv')]
+    #
+    # for file in files:
+    #     os.remove(file)
+    #
+    # print("Files deleted successfully")
 
 
 # schedule.every().day.at("07:30").do(report_automation)
 # schedule.every().day.at("01:05").do(night_audit_automation)03_08_2021report
 # night_audit_automation()
-# report_automation()
+report_automation()
 
-# while True:
-#     schedule.run_pending()
-#     time.sleep(5)
+while True:
+    schedule.run_pending()
+    time.sleep(5)
 
-root_directory = r'C:\Users\vedan\Downloads\{}'
-
-name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
-name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
-
-# c = pdftables_api.Client('f2cewhnvg3uh')
-# c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
-#       root_directory.format(name_of_the_file_HK_1_))
-
-# c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
-#       root_directory.format(name_of_the_file_HK_2_))
 #
-# data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
-#                                                            root_directory.format(name_of_the_file_HK_2_ + '.csv'),
-#                                                            room_list=None)
-
-import camelot
-import tkinter
-from PIL import EpsImagePlugin
-# EpsImagePlugin.gs_windows_binary = r'C:\Program Files\gs\gs9.53.3'
-
 # root_directory = r'C:\Users\vedan\Downloads\{}'
+#
 # name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
 # name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
-
-file = r'C:\Users\vedan\Downloads\abc.pdf'
-
-tables = camelot.read_pdf(file, pages="1-end")
-
-print(tables)
-
-# tables.export('foo.csv', f='csv', compress=True) # json, excel, html
-# print(tables[0])
 #
-import tabula
-
-file = r'C:\Users\vedan\Downloads\abc.pdf'
-
-tables = tabula.read_pdf(file, pages="1", multiple_tables=False)
-
-print(tables)
-
-from new_file import Client
-
-a = Client(api_key='f2cewhnvg3uh').csv(pdf_path=file)
-
-print(a)
+# # c = pdftables_api.Client('f2cewhnvg3uh')
+# # c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),
+# #       root_directory.format(name_of_the_file_HK_1_))
+#
+# # c.csv(root_directory.format(name_of_the_file_HK_2_ + '.pdf'),
+# #       root_directory.format(name_of_the_file_HK_2_))
+# #
+# # data_management_house_keeping_new.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
+# #                                                            root_directory.format(name_of_the_file_HK_2_ + '.csv'),
+# #                                                            room_list=None)
+#
+# import camelot
+# import tkinter
+# from PIL import EpsImagePlugin
+# # EpsImagePlugin.gs_windows_binary = r'C:\Program Files\gs\gs9.53.3'
+#
+# # root_directory = r'C:\Users\vedan\Downloads\{}'
+# # name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
+# # name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
+#
+# file = r'C:\Users\vedan\Downloads\abc.pdf'
+#
+# tables = camelot.read_pdf(file, pages="1-end")
+#
+# print(tables)
+#
+# # tables.export('foo.csv', f='csv', compress=True) # json, excel, html
+# # print(tables[0])
+# #
+# import tabula
+#
+# file = r'C:\Users\vedan\Downloads\abc.pdf'
+#
+# tables = tabula.read_pdf(file, pages="1", multiple_tables=False)
+#
+# print(tables)
+#
+# from new_file import Client
+#
+# a = Client(api_key='f2cewhnvg3uh').csv(pdf_path=file)
+#
+# print(a)
