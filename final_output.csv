@@ -1,11 +1,10 @@
 ,Room,Type,People,Status,Condition,Stay/C/O,Service,Housekeeper,Update,Notes,Arrival,Departure,Last Clean
-1,103,NHK1,1/0,OCC,Dirty,C/O,None,,,,3/9/21,3/10/21,3/7/21
-4,110,NK,1/0,OCC,Dirty,C/O,None,,,,10/7/20,3/10/21,9/23/20
-5,112,NQQ,1/0,OCC,Dirty,C/O,None,,,,3/7/21,3/10/21,3/6/21
-6,116,NHK,1/0,OCC,Dirty,C/O,,,,,10/16/20,3/10/21,10/14/20
-9,206,NK,1/0,OCC,Dirty,C/O,None,,,,3/9/21,3/10/21,3/9/21
-11,209,NK,2/0,OCC,Dirty,C/O,None,,,,3/9/21,3/10/21,3/8/21
-14,219,SNQQ,1/0,OCC,Dirty,C/O,None,,,,3/9/21,3/10/21,3/8/21
-0,114,NQQ,,VAC,Dirty,,,,,,,,3/8/21
-1,212,NK,,VAC,Dirty,,,,,,,,3/9/21
-2,215,SNQQ,,VAC,Dirty,,,,,,,,3/9/21
+2,105,NK,2/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/21/21
+4,109,NK,1/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/21/21
+12,209,NK,1/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/22/21
+13,210,NK,1/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/22/21
+14,212,NK,2/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/19/21
+15,215,SNQQ,1/0,OCC,Dirty,C/O,None,,,,3/22/21,3/23/21,3/21/21
+0,108,NK,,VAC,Dirty,,,,,,,,3/21/21
+1,206,NK,,VAC,Dirty,,,,,,,,3/17/21
+2,216,SNQQ,,VAC,Dirty,,,,,,,,3/20/21

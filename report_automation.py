@@ -11,7 +11,7 @@ import tabula
 import data_management_house_keeping
 import data_management_house_keeping_new
 import pdfkit
-# import pandas as pd
+import pandas as pd
 # from night_audit_automation import night_audit_automation
 # from print_on_the_specific_printer import print_the_file
 import pdftables_api
@@ -44,11 +44,11 @@ def report_automation():
 
         print(a)
 
-        a.send_keys("Vdesai.TXI54")
+        a.send_keys("abc.123")  # Your login credentials
 
         pyautogui.hotkey('tab')
 
-        pyautogui.write('VBD@251196')
+        pyautogui.write('password')  # Your password here
 
         pyautogui.hotkey('tab')
 
@@ -196,11 +196,11 @@ def report_automation():
 
     driver = webdriver.Chrome("chromedriver.exe")  # open google chrome using chrome driver
 
-    (name_of_the_file_, name_of_the_file_HK_1_, name_of_the_file_HK_2_) = report_download_automation()
+    # (name_of_the_file_, name_of_the_file_HK_1_, name_of_the_file_HK_2_) = report_download_automation()
 
     root_directory = r'C:\Users\vedan\Downloads\{}'
 
-    yagmail.register("reportautomation1@gmail.com", "Report@automation123")  # put sender mail id and password here
+    yagmail.register("", "")  # put sender mail id and password here
 
     def email_occupancy_snap_shot_reports_using_libraries(receiver):
         # receiver = ["reportautomation1@gmail.com"]
@@ -219,8 +219,8 @@ def report_automation():
 
         print("Report sent")
 
-    email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com"])
-    email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
+    # email_occupancy_snap_shot_reports_using_libraries(["sumit@dalwadi.com"])
+    # email_occupancy_snap_shot_reports_using_libraries(["reportautomation1@gmail.com"])
 
     name_of_the_file_HK_1_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_1'
     name_of_the_file_HK_2_ = (datetime.today()).strftime('%m_%d_%Y') + 'house_keeping_list_2'
@@ -235,44 +235,6 @@ def report_automation():
     data_management_house_keeping.house_keeping_report_function(root_directory.format(name_of_the_file_HK_1_ + '.csv'),
                                                                 root_directory.format(name_of_the_file_HK_2_ + '.csv'),
                                                                 room_list=None)
-
-    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
-    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-
-    csv_file = 'final_output.csv'
-    html_file = csv_file[:-3] + 'html'
-
-    df = pd.read_csv('final_output.csv', sep=',')
-    df.to_html(html_file)
-
-    file = open('final_output.html', 'r')
-    a = file.read()
-
-    # file = codecs.open("final_output.html", "r", "utf-8")  # different method to open the html file
-    # a = file.read()
-
-    f = open('final_output.html', 'w')
-
-    message = """<style>
-            th {
-              font-size: 20px;
-            }
-
-            td {
-              font-size: 30px;
-            }
-            </style>
-
-            """ + a
-
-    # print(f.read())
-
-    f.write(message)
-    f.close()
-
-    pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
-
-    time.sleep(2)
 
     # c = pdftables_api.Client('ewtqttj2079m')
     # c.csv(root_directory.format(name_of_the_file_HK_1_ + '.pdf'),

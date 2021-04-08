@@ -2,6 +2,7 @@ import tabula
 import pandas as pd
 from datetime import datetime
 import pdfkit
+import time
 
 
 def house_keeping_report_function(report_1, report_2, room_list=None):
@@ -9,7 +10,15 @@ def house_keeping_report_function(report_1, report_2, room_list=None):
         room_list = [107, 211, 202]
 
     df1 = pd.read_csv(report_1)
+    print("ebgubesibwgiowebiuogbwiuoebgiuwbeiugobwoiegwerhwthrtwjwr")
+    print(df1)
+    print('euwtgywehuitghiuwethwtjrywjrywjyrhrywjhyrejyrj')
+
     df2 = pd.read_csv(report_2)
+
+    print(df2)
+
+    print('raguy8uarehhehtwjryejyetjryjretjreyjrej')
 
     print(df1)
     print(df2)
@@ -26,7 +35,59 @@ def house_keeping_report_function(report_1, report_2, room_list=None):
 
     print(final_output)
 
-    final_output.to_csv("final_output.csv")
+    final_output.drop(['People', 'Status', 'Service', 'Housekeeper', 'Update', 'Notes', 'Arrival', 'Departure', 'Last Clean'], axis=1, inplace=True)
+    final_output.reset_index(drop=True, inplace=True)
+
+    print(final_output)
+    # final_output.to_csv("final_output.csv")
+
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+    csv_file = 'final_output.csv'
+    html_file = csv_file[:-3] + 'html'
+
+    # df = pd.read_csv('final_output.csv', sep=',')
+    final_output.to_html(html_file)
+
+    file = open('final_output.html', 'r')
+    a = file.read()
+
+    # file = codecs.open("final_output.html", "r", "utf-8")  # different method to open the html file
+    # a = file.read()
+
+    f = open('final_output.html', 'w')
+
+    message = """<style>
+                th {
+                  font-size: 20px;
+                }
+
+                td {
+                  font-size: 30px;
+                }
+                </style>
+
+                """ + a
+
+    # print(f.read())
+
+    f.write(message)
+    f.close()
+
+    pdfkit.from_file(html_file, 'house_keeping_report.pdf', configuration=config)
+
+    time.sleep(2)
+
+
+if __name__ == "__main__":
+    root_directory = r'C:\Users\vedan\Downloads\{}'
+
+    tabula.convert_into(root_directory.format('abc' + '.pdf'),
+                        root_directory.format('abc' + '.csv'), output_format="csv", stream=True,
+                        pages=1)
+
+    house_keeping_report_function(root_directory.format('abc' + '.csv'), root_directory.format('abcd' + '.csv'))
 
 
 # root_directory = r'C:\Users\vedan\Downloads\{}'
