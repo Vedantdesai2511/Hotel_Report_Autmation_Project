@@ -52,11 +52,11 @@ def night_audit_automation():
 
     print(a)
 
-    a.send_keys("Vdesai.TXI54")
+    a.send_keys("Vdesai.TXI54")  # Your login credentials
 
     pyautogui.hotkey('tab')
 
-    pyautogui.write('Vbd@251196')
+    pyautogui.write('Vbd@251196')  # Your password here
 
     pyautogui.hotkey('tab')
 
